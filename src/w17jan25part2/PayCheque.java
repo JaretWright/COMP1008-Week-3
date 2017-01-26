@@ -19,6 +19,9 @@ public class PayCheque {
         employeeName = name;
         setAmount(payAmount);
         this.memo = memo;
+        
+        chequeNumber = nextChequeNumber;
+        nextChequeNumber++;
     }
     
     /**
@@ -52,5 +55,14 @@ public class PayCheque {
         return chequeNumber;
     }
     
-    
+    /**
+     * This will return a String representation of a PayCheque
+     */
+    public String toString()
+    {
+        return String.format("Name: %s, amount: $%.2f, cheque #: %d memo: %s", employeeName,
+                                                                      amount,
+                                                                      chequeNumber,
+                                                                      memo);
+    }
 }

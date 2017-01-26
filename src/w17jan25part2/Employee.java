@@ -46,8 +46,7 @@ public abstract class Employee {
     @Override
     public String toString()
     {
-        return firstName + " " + lastName + " the employee number is " 
-                                            + employeeNumber;
+        return firstName + " " + lastName;
     }
     
     /**
