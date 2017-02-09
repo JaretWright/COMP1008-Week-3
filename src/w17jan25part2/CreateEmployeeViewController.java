@@ -38,7 +38,7 @@ public class CreateEmployeeViewController implements Initializable {
         try
         {
             HourlyEmployee newEmp = new HourlyEmployee(firstNameTextField.getText(),
-                                                   lastNameTextField.getText(),
+                                                    lastNameTextField.getText(),
                                                     Integer.parseInt(socialInsuranceNumTextField.getText()),
                                                     dateOfBirthDatePicker.getValue(),
                                                     Double.parseDouble(hourlyRateTextField.getText()));
