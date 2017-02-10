@@ -28,7 +28,7 @@ public class HourlyEmployee extends Employee {
     public void setHourlyRate(double rate)
     {
         if (rate < MINIMUMWAGE)
-            throw new IllegalArgumentException("Hourly rate must be above " + MINIMUMWAGE);
+            throw new IllegalArgumentException(String.format("Hourly rate must be above $%.2f", MINIMUMWAGE));
         else
             hourlyRate = rate;
     }
