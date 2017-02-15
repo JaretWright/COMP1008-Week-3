@@ -6,7 +6,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 
 /**
  * FXML Controller class
@@ -22,22 +25,33 @@ public class CreateNewEmployeeViewController implements Initializable {
     
     @FXML private DatePicker dobDatePicker;
     @FXML private Button createEmployeeButton;
-            
+    @FXML private Label errorMessageLabel;
+    
+    @FXML private RadioButton hourlyRadioButton;
+    @FXML private RadioButton commissionRadioButton;
+    
+    
     /**
-     * When the createEmployeeButton is pushed, it will read
-     * from the fields and create a new Employee
-     */
+     * This method will create a new employee and print them to the screen
+     */        
     public void createEmployeeButtonPushed()
     {
-        //this initially assumes that the fields are populated
-        //correctly
-        HourlyEmployee newEmployee = new HourlyEmployee(firstNameTextField.getText(),
-                                                        lastNameTextField.getText(),
-                                                    Integer.parseInt(socialInsuranceTextField.getText()),
-                                                        dobDatePicker.getValue(),
-                                                    Double.parseDouble(hourlyRateTextField.getText()));
+        try
+        {
+            HourlyEmployee newEmpl = new HourlyEmployee(this.firstNameTextField.getText(),
+                                    this.lastNameTextField.getText(),
+                                    Integer.parseInt(this.socialInsuranceTextField.getText()),
+                                    this.dobDatePicker.getValue(),
+                                    Double.parseDouble(this.hourlyRateTextField.getText()));
+
+            System.out.printf("Employee: %s is from the class %s%n", newEmpl, newEmpl.getClass());    
+        }
+        catch (IllegalArgumentException e)
+        {
+            this.errorMessageLabel.setText(e.getMessage());
+            this.errorMessageLabel.setVisible(true);
+        }
         
-        System.out.printf("The employee is: %s", newEmployee.toString());
     }
     
     /**
@@ -45,7 +59,13 @@ public class CreateNewEmployeeViewController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        this.errorMessageLabel.setVisible(false);
+        
+        //This will put the radio buttons in a toggle group, so that only 
+        //one can be selected at a time
+        ToggleGroup employeeTypeGroup = new ToggleGroup();
+        this.hourlyRadioButton.setToggleGroup(employeeTypeGroup);
+        this.commissionRadioButton.setToggleGroup(employeeTypeGroup);
     }    
     
 }

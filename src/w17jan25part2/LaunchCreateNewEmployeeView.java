@@ -21,15 +21,21 @@ public class LaunchCreateNewEmployeeView extends Application
     
     @Override
     public void start(Stage primaryStage) throws Exception {
+        
+        //load the view
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("CreateNewEmployeeView.fxml"));
         AnchorPane createEmployeeLayout = loader.load();
         
-        Scene createEmplopyeeScene = new Scene(createEmployeeLayout);
-        
+        //Create the Scene and set the Scene on the stage
+        Scene createEmplopyeeScene = new Scene(createEmployeeLayout);        
         primaryStage.setScene(createEmplopyeeScene);
-        primaryStage.setTitle("Create new employee");
+        
+        //Show the stage
+        primaryStage.setTitle("Zac's hearing Angels");
         primaryStage.show();
     }
+    
+
     
 }
