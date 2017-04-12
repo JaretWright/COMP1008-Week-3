@@ -55,13 +55,15 @@ public class CommissionEmployee extends Employee {
     
     @Override
     public PayCheque getPayCheque() {
-        double payAmount = commissionRate / 100 * monthlySales;
-        
-        PayCheque newPay = new PayCheque(super.toString(), payAmount, "Commissions");
-        
-        monthlySales = 0;
-        
+        PayCheque newPay = new PayCheque(super.toString(), getPaymentAmount(), "Commissions");
         return newPay;
+    }
+
+    @Override
+    public double getPaymentAmount() {
+        double payAmount = commissionRate / 100 * monthlySales;
+        monthlySales = 0;
+        return payAmount;
     }
     
 }
